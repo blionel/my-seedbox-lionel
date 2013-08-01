@@ -1,0 +1,8 @@
+"/<UU>0" =>
+( "127.0.0.1" =>
+(
+"socket" => "/home/<user>/.session/<u>.socket",
+"check-local" => "disable",
+"disable-time" => 0, # don't disable scgi if connection fails
+)
+),

@@ -1,0 +1,5 @@
+"/<UU>0" => (
+"method" => "digest",
+"realm" => "ruTorrent Seedbox",
+"require" => "user=<user>",
+),
