@@ -22,7 +22,7 @@ read -p "Installation de PDFtk ?" INSTALL_PDFTK
 # Preparation du script
 #
 
-$INSTALL_DIR=/etc/my-seedbox-lionel
+$INSTALL_DIR=/etc/my-seedbox-lionel/sources
 read -p "Mot de passe root :" -s ROOT_PASS
 
 aptitude update
@@ -30,7 +30,7 @@ aptitude safe-upgrade -y
 apt-get --yes install git
 
 rm -f -r /etc/my-seedbox-lionel
-git clone -b https://github.com/blionel/my-seedbox-lionel.git /etc/my-seedbox-lionel
+git clone https://github.com/blionel/my-seedbox-lionel.git /etc/my-seedbox-lionel
 
 #
 # Configuration des utilisateurs seedbox
@@ -135,7 +135,7 @@ ldconfig
 chown -R www-data:www-data /var/www/rutorrent
 
 #
-# Configuration générales
+# Configuration générale
 #
 
 # Configuration du plugin create
@@ -232,9 +232,9 @@ do
         sed -i "s/<UU>/${UU[$i]}/" /etc/lighttpd/lighttpd.conf
 done
 
-echo ")"
-echo "server.modules += ( \"mod_scgi\" )"
-echo "scgi.server = ("
+echo ")" >> /etc/lighttpd/lighttpd.conf
+echo "server.modules += ( \"mod_scgi\" )" >> /etc/lighttpd/lighttpd.conf
+echo "scgi.server = (" >> /etc/lighttpd/lighttpd.conf
 
 for i in `seq 1 $nbuser`;
 do
@@ -247,7 +247,7 @@ do
 	mkdir /home/${user[$i]}/torrents/finish
 	mkdir /home/${user[$i]}/.session
 
-	ln -s /home/${user[$i]}/torrents/finish /home/${user[$i]}/torrents/finish
+	ln -s /home/${user[$i]}/torrents/finish /home/${user[$i]}/finish
 
 	# On bloque l'utilisateur dans son home en SFTP
 	cd /etc/ssh/
