@@ -22,7 +22,7 @@ read -p "Installation de PDFtk ?" INSTALL_PDFTK
 # Preparation du script
 #
 
-$INSTALL_DIR=/etc/my-seedbox-lionel/sources
+INSTALL_DIR=/etc/my-seedbox-lionel/sources
 read -p "Mot de passe root :" -s ROOT_PASS
 
 aptitude update
@@ -247,7 +247,7 @@ do
 	mkdir /home/${user[$i]}/torrents/finish
 	mkdir /home/${user[$i]}/.session
 
-	ln -s /home/${user[$i]}/torrents/finish /home/${user[$i]}/finish
+	ln -s /torrents/finish /home/${user[$i]}/finish
 
 	# On bloque l'utilisateur dans son home en SFTP
 	cd /etc/ssh/

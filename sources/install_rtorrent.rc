@@ -11,7 +11,7 @@ session = /home/<user>/.session
 encryption = allow_incoming, try_outgoing, enable_retry
 schedule = watch_directory,1,1,"load_start=/home/<user>/watch/*.torrent"
 #schedule = untied_directory,5,5,"stop_untied=/home/<user>/watch/*.torrent"
-system.method.set_key = event.download.finished,move_complete,"execute=cp,-R,$d.get_base_path=,/home/<user>/torrents/finish/"
+system.method.set_key = event.download.finished,move_complete,"execute=ln,,$d.get_base_path=,/home/<user>/torrents/finish/"
 use_udp_trackers = yes
 dht = off
 peer_exchange = no
